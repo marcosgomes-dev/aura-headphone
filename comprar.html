@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Audio - Comprar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/logo.jpg" type="image/jpeg">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="img/logo.jpg" alt="Aura Logo" width="30" height="30" class="me-2 rounded-circle">
+                Aura Audio
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuAura">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menuAura">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Produtos</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="aura_pro.html">Aura Pro</a></li>
+                            <li><a class="dropdown-item" href="aura_sport.html">Aura Sport</a></li>
+                            <li><a class="dropdown-item" href="aura_studio.html">Aura Studio</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link active" href="comprar.html">Comprar</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5 flex-grow-1">
+        <h2 class="text-center mb-4">Finalize sua Compra</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow border-0">
+                    <div class="card-body p-4">
+                        <form id="formCompra">
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome Completo</label>
+                                <input type="text" class="form-control" id="nome" required placeholder="Digite seu nome">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="email" required placeholder="seu@email.com">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="modeloFone" class="form-label">Qual modelo você deseja?</label>
+                                <select class="form-select" id="modeloFone" required>
+                                    <option value="" disabled selected>Selecione um fone...</option>
+                                    <option value="pro">Aura Pro</option>
+                                    <option value="sport">Aura Sport</option>
+                                    <option value="studio">Aura Studio</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="cor" class="form-label">Cor do Fone</label>
+                                <select class="form-select" id="cor">
+                                    <option value="preto">Preto Absoluto</option>
+                                    <option value="prata">Prata Lunar</option>
+                                    <option value="madeira">Madeira (apenas Studio)</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label d-block">Opção de Entrega</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="entrega" id="sedex" value="sedex" checked>
+                                    <label class="form-check-label" for="sedex">Sedex</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="entrega" id="pac" value="pac">
+                                    <label class="form-check-label" for="pac">PAC</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100 btn-lg">Finalizar Pedido</button>
+                        </form>
+                        
+                        <div id="mensagemSucesso" class="alert alert-success mt-4 d-none" role="alert">
+                            Pedido realizado com sucesso! Verifique seu e-mail para acompanhar a entrega.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-4 mt-auto">
+        <p class="mb-0">&copy; 2026 Aura Audio. Projeto Acadêmico.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
