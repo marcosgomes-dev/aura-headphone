@@ -1,49 +1,62 @@
+// Aguarda o carregamento completo do HTML antes de rodar o script
 document.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const modeloParam = urlParams.get('modelo');
-    const selectModelo = document.getElementById('modeloFone');
+    // Pega o parâmetro 'modelo' da URL (ex: ?modelo=pro)
+    const parametrosUrl = new URLSearchParams(window.location.search);
+    const modeloParametro = parametrosUrl.get('modelo');
+    const selecaoModelo = document.getElementById('modeloFone');
 
-    if (modeloParam && selectModelo) {
-        for (let i = 0; i < selectModelo.options.length; i++) {
-            if (selectModelo.options[i].value === modeloParam) {
-                selectModelo.value = modeloParam;
+    // Se houver um modelo na URL e o select existir na página, seleciona a opção correta
+    if (modeloParametro && selecaoModelo) {
+        for (let i = 0; i < selecaoModelo.options.length; i++) {
+            if (selecaoModelo.options[i].value === modeloParametro) {
+                selecaoModelo.value = modeloParametro;
                 break;
             }
         }
     }
-    const form = document.getElementById('formCompra');
-    const msg = document.getElementById('mensagemSucesso');
+    
+    // Configura o envio do formulário de compra
+    const formulario = document.getElementById('formCompra');
+    const mensagem = document.getElementById('mensagemSucesso');
 
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault(); 
+    if (formulario) {
+        formulario.addEventListener('submit', (e) => {
+            e.preventDefault(); // Evita que a página recarregue
             
-            msg.classList.remove('d-none');
+            // Mostra a mensagem de sucesso
+            mensagem.classList.remove('d-none');
             
-            form.reset();
+            // Limpa o formulário
+            formulario.reset();
             
-            if (modeloParam && selectModelo) {
-                selectModelo.value = modeloParam;
+            // Mantém o modelo selecionado após limpar
+            if (modeloParametro && selecaoModelo) {
+                selecaoModelo.value = modeloParametro;
             }
             
+            // Esconde a mensagem após 5 segundos
             setTimeout(() => {
-                msg.classList.add('d-none');
+                mensagem.classList.add('d-none');
             }, 5000);
         });
     }
 });
 
-function changeImage(element) {
-    const mainImg = document.getElementById('mainImage');
-    mainImg.style.opacity = 0.8;
+// Função para trocar a imagem principal quando clica nas miniaturas
+function trocarImagem(elemento) {
+    const imagemPrincipal = document.getElementById('imagemPrincipal');
+    imagemPrincipal.style.opacity = 0.8;
+    
     setTimeout(() => {
-        mainImg.src = element.src;
-        mainImg.style.opacity = 1;
+        imagemPrincipal.src = elemento.src;
+        imagemPrincipal.style.opacity = 1;
     }, 150);
 
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    for(let i=0; i < thumbnails.length; i++) {
-        thumbnails[i].classList.remove('active');
+    // Remove a classe 'active' de todas as miniaturas
+    const miniaturas = document.querySelectorAll('.miniatura');
+    for(let i=0; i < miniaturas.length; i++) {
+        miniaturas[i].classList.remove('active');
     }
-    element.classList.add('active');
+    // Adiciona a classe 'active' na miniatura clicada
+    elemento.classList.add('active');
 }
